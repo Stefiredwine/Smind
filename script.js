@@ -1,11 +1,12 @@
 // function to calculate the result of the survey
 function tabulateAnswers() {
     // initialize variables for each choice's score
-    // If you add more choices and outcomes, you must add another variable here.
+
     var c1score = 0;
     var c2score = 0;
     var c3score = 0;
     var c4score = 0;
+    var c5score = 0;
     
     // get a list of the radio inputs on the page
     var choices = document.getElementsByTagName('input');
@@ -26,43 +27,52 @@ function tabulateAnswers() {
         if (choices[i].value == 'c4') {
           c4score = c4score + 1;
         }
-        // If you add more choices and outcomes, you must add another if statement below.
+        if (choices[i].value == 'c5') {
+          c5score = c5score + 1;
+        }
+
       }
       
     }
     
     // Find out which choice got the highest score.
     // If you add more choices and outcomes, you must add the variable here.
-    var maxscore = Math.max(c1score,c2score,c3score,c4score);
+    var maxscore = Math.max(c1score,c2score,c3score,c4score,c5score);
 
-    alert("valor maxscore: " + maxscore);
+    //alert("valor maxscore: " + maxscore);
     
     // Display answer corresponding to that choice
     var answerbox = document.getElementById('answer');
     if (c1score == maxscore) { // If user chooses the first choice the most, this outcome will be displayed.
+      answerbox.innerHTML = "Categoría Ansiedad";
+      window.location.href = "http://smind.atwebpages.com/ansiedad.php";
       alert("Categoría Ansiedad");
-      window.location.href = "https://professor-falken.com";
-      answerbox.innerHTML = "You are a computer researcher! You will enjoy developing algorithms, and doing things with computers no one else has done before. For example, researchers sent a robot to the moon, built a computer to beat the best humans in Jeopardy, and are creating robots to do your chores for you. Computer researchers typically go to college and work at universities, or as a part of the research and development team in companies.";
     }
     if (c2score == maxscore) { // If user chooses the second choice the most, this outcome will be displayed.
-      answerbox.innerHTML = "You are an altruistic coder! You love to help people and feel the positive impact of your work every day. Altrustic coders are out there every day making the world a better place. Computer scientists write software to more effectively help doctors diagnose illnesses such as cancer, connect people in third world countries to education and medical resources on the internet, code websites and software for nonprofit organizations, and much more!";
-      window.location.href = "https://professor-falken.com";
+      answerbox.innerHTML = "Categoría Depresión";
+      window.location.href = "http://smind.atwebpages.com/depresion.php";
       alert("Categoría Depresión");
     }
     if (c3score == maxscore) { // If user chooses the third choice the most, this outcome will be displayed.
-      answerbox.innerHTML = "You are a developer! Developers create games, apps, social media, movies, and all sorts of fun programs that people enjoy. These coders work on projects such as Minecraft, Poptropica, and Youtube. Developers need sharp coding skills, are great debuggers, and need to work well in a team of other developers.";
-      window.location.href = "https://professor-falken.com";
+      answerbox.innerHTML = "Categoría Transtorno de sueño";
+      window.location.href = "http://smind.atwebpages.com/transtorno_sueno.php";
       alert("Categoría Transtorno de sueño");
     }
     if (c4score == maxscore) { // If user chooses the fourth choice the most, this outcome will be displayed.
-      answerbox.innerHTML = "You are the future CEO of a new startup! You enjoy taking risks and building the next big thing that no one has even thought of before. For example, billionare Mark Zuckerberg founded Facebook in 2004, a project he started inside his dorm room in college which eventually turned into a social networking revolution that changed the world.";
-      window.location.href = "https://professor-falken.com";
-      alert("Categoría TDA");
+      answerbox.innerHTML = "Categoría TDAH";
+      window.location.href = "http://smind.atwebpages.com/TDAH.php";
+      alert("Categoría TDAH");
     }
-    // If you add more choices, you must add another response below.
+    if (c5score == maxscore) { // If user chooses the fourth choice the most, this outcome will be displayed.
+      answerbox.innerHTML = "Felicidades, no presentas ningún transtorno de sueño, de ansiedad, depresión o TDAH, pero te recomendamos visitar nuestra página para contactarte con nuestros especialistas";
+      window.location.href = "http://smind.atwebpages.com/";
+      alert("Felicidades, no presentas ningún transtorno de sueño, de ansiedad, depresión o TDAH, pero te recomendamos visitar nuestra página para contactarte con nuestros especialistas");
+    }
   }
   
-  // program the reset button
-  function resetAnswer() {
-    document.getElementById("answer").innerText = "Your result will show up here!";
-  }
+// program the reset button
+function resetAnswer() {
+  var answerbox = document.getElementById('answer');
+  answerbox.innerHTML = "Your result will show up here!";
+}
+
